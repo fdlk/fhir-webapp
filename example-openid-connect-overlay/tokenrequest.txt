@@ -1,0 +1,16 @@
+POST http://localhost:8080/my-openid-connect-server/token HTTP/1.1
+Authorization: Basic d2ViYXBwOnNlY3JldA==
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (Windows NT 6.1; rv:26.0) Gecko/20100101 Firefox/26.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: nl,en-us;q=0.7,en;q=0.3
+Accept-Encoding: gzip, deflate
+DNT: 1
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Content-Length: 92
+Cookie: JSESSIONID=9EFF312F2821BE9992046D2FD32F9E21; csrftoken=lcdOYmW1eaZZzQzUZqffyWEEGcIzVuCH; __RequestVerificationToken_L2lkc3J20=2uaKH3MgAbKR2XBOwuguai2uazGCtiGm_E3darQs2TCcLn_br_fcDWf5kJSqUjOuDuFNBYAkt5gNHuzWP4xkCb3-RiYg_1To-NXs4XAkJftK5GSXVQPEs-e0f1LlurJGkZVfVn-QmvuQQOum66cIMQ2; JSESSIONID=814AFDD31F6C35CA4383ECC8497A25B6
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+code=r11B68&grant_type=authorization_code&redirect_uri=http%3A%2F%2Flocalhost%3A9001%2Fredir
