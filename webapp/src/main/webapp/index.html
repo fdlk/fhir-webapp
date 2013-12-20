@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>UMCG on FHIR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/bootstrap-theme.css" rel="stylesheet">
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+<!-- Fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="assets/ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="assets/ico/favicon.png">
+</head>
+
+<body">
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<span class="nav navbar-brand"
+					data-bind="visible: patient, with: patient">
+					<span data-bind="text: naam"></span> <span
+					data-bind="text: umcgNummer"></span>
+				</span>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#"><span
+							class="glyphicon glyphicon-user"></span> Pati&euml;nt</a></li>
+					<li><a href="#documenten"><span
+							class="glyphicon glyphicon-folder-open"></span> Documenten</a></li>
+				</ul>
+				<a class="navbar-brand navbar-right" href="#"><span
+					class="glyphicon glyphicon-fire"></span>UMCG on FHIR</a>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon">UMCG Nummer</span> <input type="number"
+				class="form-control" data-bind="text: zoekveld"> <span class="input-group-btn">
+				<button class="btn btn-primary" type="button"
+					data-bind="click: zoek">Zoek</button>
+			</span>
+		</div>
+
+		<div class="panel panel-info"
+			data-bind="visible: patient, with: patient">
+			<div class="panel-heading">
+				<h3>
+					<span data-bind="text: naam"></span>
+				</h3>
+				<span class="label label-info" data-bind="visible: meerling">Meerling</span>
+				<span class="label label-warning" data-bind="visible: overleden">Overleden</span>
+			</div>
+			<div class="panel-body container">
+				<dl class="dl-horizontal">
+					<dt>UMCG Nummer</dt>
+					<dd>
+						<span data-bind="text: umcgNummer"></span>
+					</dd>
+					<dt data-bind="visible: bsn">BSN</dt>
+					<dd data-bind="visible: bsn">
+						<span>213434525</span>
+					</dd>
+					<dt>Adres</dt>
+					<dd data-bind="foreach: adres">
+						<span data-bind="text:$data"></span><br>
+					</dd>
+					<dt>Telefoon</dt>
+					<dd>
+						<span data-bind="text: telefoon"></span>
+					</dd>
+					<dt>Geslacht</dt>
+					<dd>
+						<span data-bind="text: geslacht"></span>
+					</dd>
+					<dt>Geboortedatum</dt>
+					<dd>
+						<span data-bind="text: geboortedatum"></span>
+					</dd>
+					<dt data-bind="visible: overleden">Overlijdensdatum</dt>
+					<dd data-bind="visible: overleden">
+						<span>onbekend</span>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+	<!-- /container -->
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/knockout-3.0.0.js"></script>
+	<script src="assets/js/patientVM.js"></script>
+</body>
+</html>
