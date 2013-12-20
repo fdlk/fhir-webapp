@@ -8,6 +8,7 @@ import org.hl7.fhir.instance.model.Address.AddressUse;
 import org.hl7.fhir.instance.model.Boolean;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
+import org.hl7.fhir.instance.model.Contact;
 import org.hl7.fhir.instance.model.DateAndTime;
 import org.hl7.fhir.instance.model.HumanName;
 import org.hl7.fhir.instance.model.Identifier.IdentifierUse;
@@ -36,16 +37,19 @@ public class PatientController {
 		patient.addIdentifier().setValueSimple(id)
 				.setSystemSimple("http://umcg.nl/mrn")
 				.setLabelSimple("UMCG nummer")
-				.setUseSimple(IdentifierUse.official).setAssigner(umcg);
+				.setUseSimple(IdentifierUse.usual).setAssigner(umcg);
+		patient.addIdentifier().setValueSimple("123412343")
+				.setSystemSimple("http://staat.nl/bsn").setLabelSimple("BSN")
+				.setUseSimple(IdentifierUse.official);
 		patient.setActiveSimple(true);
 		Boolean deceased = new Boolean();
 		deceased.setValue(false);
 		patient.setDeceased(deceased);
 		CodeableConcept gender = new CodeableConcept();
-		gender.setTextSimple("Male");
+		gender.setTextSimple("Mannelijk");
 		Coding genderCoding = gender.addCoding();
 		genderCoding.setCodeSimple("M");
-		genderCoding.setDisplaySimple("Mannelijk");
+		genderCoding.setDisplaySimple("Male");
 		genderCoding
 				.setSystemSimple("http://hl7.org/fhir/v3/AdministrativeGender");
 		patient.setGender(gender);
@@ -74,6 +78,8 @@ public class PatientController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		Contact telco = patient.addTelecom();
+		telco.setValueSimple("050-1223434");
 		return patient;
 	}
 }
